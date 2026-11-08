@@ -45,5 +45,6 @@ uv run pytest
 
 ## مجوزها
 
+- کد این پروژه با مجوز [MIT](LICENSE) منتشر شده است.
 - مدل ترجمه‌ی [NLLB-200](https://huggingface.co/facebook/nllb-200-distilled-600M) مجوز CC-BY-NC 4.0 دارد و **فقط برای استفاده‌ی غیرتجاری** است.
 - فونت [Vazirmatn](https://github.com/rastikerdar/vazirmatn) با مجوز SIL Open Font License همراه پروژه است.
