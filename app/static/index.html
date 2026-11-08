@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>دوزبانه</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body data-state="empty">
+  <header class="masthead">
+    <h1>دوزبانه</h1>
+    <div class="masthead-actions">
+      <button type="button" class="quiet" id="restart">ویدیوی تازه</button>
+      <button type="button" class="quiet" id="setupButton">بررسی پیش‌نیازها</button>
+    </div>
+  </header>
+
+  <section class="prereq" id="prereq" aria-label="پیش‌نیازها" hidden>
+    <p class="prereq-note" id="prereqNote" role="status"></p>
+    <ul class="prereq-list" id="prereqList"></ul>
+  </section>
+
+  <main class="layout">
+    <section class="stage" aria-label="ویدیو">
+      <div class="screen" id="screen">
+        <video id="video" playsinline preload="metadata"></video>
+
+        <label class="picker" id="picker">
+          <input type="file" id="file" accept="video/*,.mkv,.avi,.mov,.webm,.m4v">
+          <svg class="plus" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30"/><path d="M32 18v28M18 32h28"/>
+          </svg>
+          <span class="visually-hidden">انتخاب فایل ویدیو</span>
+        </label>
+
+        <div class="subs" id="subs" aria-live="polite">
+          <p class="sub first" id="subFirst" dir="auto"></p>
+          <p class="sub second" id="subSecond" dir="auto"></p>
+        </div>
+        <div class="track" id="track"><div class="fill" id="trackFill"></div></div>
+      </div>
+
+      <form class="console" id="setup">
+        <label class="field">
+          <span>زبان گفتار ویدیو</span>
+          <select id="speech"></select>
+        </label>
+        <label class="field">
+          <span><i class="swatch one"></i>زیرنویس اول</span>
+          <select id="lang1"></select>
+        </label>
+        <label class="field">
+          <span><i class="swatch two"></i>زیرنویس دوم</span>
+          <select id="lang2"></select>
+        </label>
+        <label class="field">
+          <span>تشخیص گفتار</span>
+          <select id="quality">
+            <option value="accurate">دقیق‌تر و کندتر</option>
+            <option value="fast">سریع‌تر با خطای بیشتر</option>
+          </select>
+        </label>
+        <button type="submit" class="primary">ساخت زیرنویس</button>
+        <p class="hint" id="setupHint" role="alert"></p>
+      </form>
+
+      <div class="outputs" id="outputs">
+        <button type="button" class="primary" id="render">ساخت ویدیو با زیرنویس</button>
+        <a class="primary" id="downloadVideo" hidden>دانلود ویدیو با زیرنویس</a>
+        <a class="quiet" id="srt1" download></a>
+        <a class="quiet" id="srt2" download hidden></a>
+        <p class="hint" id="renderHint" role="alert"></p>
+      </div>
+    </section>
+
+    <section class="editor" id="editor" aria-label="متن زیرنویس‌ها">
+      <header class="editor-head">
+        <h2>متن زیرنویس‌ها</h2>
+        <span class="saved" id="saved" role="status"></span>
+      </header>
+      <p class="legend" id="legend"></p>
+      <fieldset class="cues" id="cues"></fieldset>
+    </section>
+  </main>
+
+  <script src="/static/app.js" type="module"></script>
+</body>
+</html>
